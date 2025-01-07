@@ -142,16 +142,6 @@ const QnA = ({ qnaData, setQnaData }) => {
             ))}
           </TagList>
 
-          {/* 답변 폼 */}
-          <AnswerForm onSubmit={(e) => handleAnswerSubmit(item.questionId, e)}>
-            <AnswerInput
-              placeholder="답변을 입력하세요..."
-              value={answers[item.questionId] || ""}
-              onChange={(e) => handleAnswerChange(item.questionId, e)}
-            />
-            <SubmitAnswerButton type="submit">답변하기</SubmitAnswerButton>
-          </AnswerForm>
-
           {/* 제출된 답변 표시 */}
           <AnswerList>
             {item.answerContent && (
@@ -162,6 +152,16 @@ const QnA = ({ qnaData, setQnaData }) => {
               </AnswerItem>
             )}
           </AnswerList>
+
+          {/* 답변 폼 */}
+          <AnswerForm onSubmit={(e) => handleAnswerSubmit(item.questionId, e)}>
+            <AnswerInput
+              placeholder="답변을 입력하세요..."
+              value={answers[item.questionId] || ""}
+              onChange={(e) => handleAnswerChange(item.questionId, e)}
+            />
+            <SubmitAnswerButton type="submit">답변하기</SubmitAnswerButton>
+          </AnswerForm>
         </QnAItem>
       ))}
     </QnAContainer>

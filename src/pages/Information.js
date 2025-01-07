@@ -1,22 +1,11 @@
 import React, { useState } from "react";
-import styled from "styled-components";
-import "../assets/fonts/fonts.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-// Styled Components
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw; /* 전체 너비 설정 */
-  height: 90vh; /* 전체 높이 설정 */
-  font-family: "GowunBatang-Regular";
-`;
+import styled from "styled-components";
+import RecommandList from "../components/RecommandList";
 
-const MainTitle = styled.div`
-  font-size: 50px;
-  margin: 10% 0 5% 0;
+const InformationContainer = styled.div`
+  margin: 3%;
 `;
 
 const Input = styled.input`
@@ -25,7 +14,7 @@ const Input = styled.input`
   border: 2px solid #ccc;
   border-radius: 5px;
   width: 40vw;
-
+  margin-left: 30%;
   transition: border-color 0.3s ease;
   opacity: 0.8;
   font-family: "GowunBatang-Regular";
@@ -35,26 +24,41 @@ const Input = styled.input`
   }
 `;
 
-const Intro = () => {
+const WidthLine = styled.div`
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+  margin-top: 2%;
+`;
+
+const HeightLine = styled.div`
+  width: 1px;
+  height: auto;
+  background-color: lightgray;
+`;
+
+const RecommandTitle = styled.div`
+  margin: 3%;
+  width: 15vw;
+  height: 10vh;
+  background-color: rgba(195, 199, 255, 0.38);
+  border: 0;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+
+  font-family: "MaruBuri";
+`;
+
+const Information = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSearchQuery(event.target.value);
   };
-
-  const handleSearch = () => {
-    // Navigate to /information when the search button is clicked
-    navigate("/information", { state: { query: searchQuery } }); // Pass search query if needed
-  };
-
   return (
-    <Container>
-      <MainTitle>
-        내 마음의 이야기를 듣고, 길을 찾고,
-        <br /> 함께 나아가는 여정 그리고 그 공간,
-      </MainTitle>
-
+    <InformationContainer>
       <Input
         type="text"
         value={searchQuery}
@@ -64,21 +68,29 @@ const Intro = () => {
 
       <button
         style={{ background: "transparent", border: "0", cursor: "pointer" }}
-        onClick={handleSearch}
       >
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           style={{
             position: "absolute",
-            top: "69%",
-            right: "30%",
+            top: "22%",
+            right: "29%",
             fontSize: "20px",
             color: "gray",
           }}
         />
       </button>
-    </Container>
+      <WidthLine />
+      <div style={{ display: "flex" }}>
+        <RecommandTitle>
+          AI가 분석한
+          <br /> 결과입니다..
+        </RecommandTitle>
+        <HeightLine />
+        <RecommandList />
+      </div>
+    </InformationContainer>
   );
 };
 
-export default Intro;
+export default Information;

@@ -9,6 +9,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateQnA from "./pages/CreateQnA";
 import PostPage from "./pages/Post";
+import Information from "./pages/Information";
 
 const App = () => {
   const [qnaData, setQnaData] = useState([]); // Q&A 데이터를 관리하는 상태
@@ -22,6 +23,7 @@ const App = () => {
       <Navbar /> {/* Navbar를 Routes 밖으로 이동 */}
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/information" element={<Information />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/health-news" element={<HealthNews />} />
