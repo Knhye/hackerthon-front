@@ -75,6 +75,7 @@ const CreateQnA = ({ addQuestion }) => {
     alert("질문이 제출되었습니다!");
     navigate("/specialist-consultation"); // 질문 제출 후 Q&A 리스트 페이지로 이동
   };
+
   return (
     <CreateQnAContainer>
       <Title>질문 작성하기</Title>

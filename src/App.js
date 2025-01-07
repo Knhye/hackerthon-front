@@ -8,7 +8,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateQnA from "./pages/CreateQnA";
-import QnA from "./components/QnA"; // QnA 컴포넌트 임포트
+import PostPage from "./pages/Post";
 
 const App = () => {
   const [qnaData, setQnaData] = useState([]); // Q&A 데이터를 관리하는 상태
@@ -34,6 +34,8 @@ const App = () => {
           path="/specialist-consultation/create-question"
           element={<CreateQnA addQuestion={addQuestion} />}
         />
+
+        <Route path="/post" element={<PostPage />} />
       </Routes>
     </Router>
   );
