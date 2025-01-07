@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import profileImage from "../assets/images/qnaProfile.jpg";
+import profileImage from "../assets/images/qnaProfile.jpg"; // 프로필 이미지 임포트
 
 const QnAContainer = styled.div`
   width: 100%;
@@ -29,7 +29,8 @@ const UserName = styled.span`
   font-weight: bold;
 `;
 
-const Date = styled.span`
+const QDate = styled.span`
+  /* QDate로 변경 */
   margin-left: auto;
   color: #888;
 `;
@@ -54,38 +55,38 @@ const TagItem = styled.span`
 const AnswerForm = styled.form`
   display: flex;
   flex-direction: column;
-  margin-top: 20px; /* 질문과 답글 사이의 여백 */
+  margin-top: 20px;
 `;
 
 const AnswerInput = styled.textarea`
-  width: calc(100% - 20px); /* 너비 조정 */
-  height: 50px; /* 높이 조정 */
-  padding: 10px; /* 내부 여백 */
+  width: calc(100% -20px);
+  height: 50px;
+  padding: 10px;
 `;
 
 const SubmitAnswerButton = styled.button`
   padding: 10px;
-  background-color: #81c784; /* 버튼 색상 */
+  background-color: #81c784;
   color: white;
   border: none;
   border-radius: 5px;
 
   &:hover {
-    background-color: #66bb6a; /* hover 시 색상 변경 */
+    background-color: #66bb6a;
     transition: bg-color 0.3s ease;
   }
 `;
 
 const AnswerList = styled.div`
-  margin-top: 20px; /* 답변 목록과 질문 간의 여백 */
-  padding-left: 10px; /* 왼쪽 여백 */
-  border-left: 2px solid #81c784; /* 왼쪽 경계선 */
+  margin-top: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #81c784;
 `;
 
 const AnswerItem = styled.div`
-  margin-top: 10px; /* 답변 간의 여백 */
-  padding-bottom: 10px; /* 아래 여백 */
-  border-bottom: 1px solid #ddd; /* 아래 경계선 */
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
 `;
 
 const QnA = ({ qnaData, setQnaData }) => {
@@ -121,6 +122,7 @@ const QnA = ({ qnaData, setQnaData }) => {
   const handleAnswerChange = (questionId, e) => {
     setAnswers((prev) => ({ ...prev, [questionId]: e.target.value })); // 답변 내용 업데이트
   };
+
   return (
     <QnAContainer>
       {qnaData.map((item) => (
@@ -128,7 +130,10 @@ const QnA = ({ qnaData, setQnaData }) => {
           <UserInfo>
             <UserProfile src={profileImage} alt="User Profile" />
             <UserName>{item.userName}</UserName>
-            <Date>{item.date}</Date>
+            <QDate>
+              {item.answerDate || new Date().toLocaleDateString()}
+            </QDate>{" "}
+            {/* QDate로 변경 */}
           </UserInfo>
           <Content>{item.content}</Content>
           <TagList>
@@ -137,6 +142,7 @@ const QnA = ({ qnaData, setQnaData }) => {
             ))}
           </TagList>
 
+          {/* 답변 폼 */}
           <AnswerForm onSubmit={(e) => handleAnswerSubmit(item.questionId, e)}>
             <AnswerInput
               placeholder="답변을 입력하세요..."

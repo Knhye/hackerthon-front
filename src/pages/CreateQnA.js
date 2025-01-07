@@ -60,7 +60,7 @@ const CreateQnA = ({ addQuestion }) => {
     const newQuestion = {
       questionId: Date.now(), // 고유 ID 생성 (임시로 현재 시간 사용)
       userName: "사용자 이름", // 사용자 이름 (임시로 설정)
-      date: new Date().toLocaleDateString(), // 현재 날짜
+      qDate: new Date().toLocaleDateString(), // 현재 날짜를 qDate로 변경
       content: question,
       tags: tags.split(",").map((tag) => tag.trim()), // 쉼표로 구분된 태그 배열로 변환
       answerUserName: "", // 초기에는 답변자가 없으므로 빈 문자열
@@ -92,9 +92,7 @@ const CreateQnA = ({ addQuestion }) => {
           value={question}
           onChange={(e) => setQuestion(e.target.value)}
         />
-        <SubmitButton type="submit" to="/specialist-consultation">
-          제출하기
-        </SubmitButton>
+        <SubmitButton type="submit">제출하기</SubmitButton>
       </Form>
     </CreateQnAContainer>
   );
