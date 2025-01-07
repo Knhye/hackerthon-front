@@ -10,7 +10,7 @@ const NavContainer = styled.div`
   display: flex;
   font-family: "MaruBuri";
   background-color: transparent; /* 배경색을 투명으로 설정 */
-  position: fixed;
+  position: sticky;
 `;
 
 const Logo = styled(Link)`

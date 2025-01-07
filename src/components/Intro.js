@@ -16,7 +16,7 @@ const Container = styled.div`
 
 const MainTitle = styled.div`
   font-size: 50px;
-  margin: 15% 0 5% 0;
+  margin: 10% 0 5% 0;
 `;
 
 const Input = styled.input`
@@ -56,12 +56,14 @@ const Intro = () => {
         placeholder="어느 증상을 가지고 계신가요?"
       />
 
-      <button style={{ background: "transparent", border: "0" }}>
+      <button
+        style={{ background: "transparent", border: "0", cursor: "pointer" }}
+      >
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
           style={{
             position: "absolute",
-            top: "65.5%",
+            top: "69%",
             right: "30%",
             fontSize: "20px",
             color: "gray",
