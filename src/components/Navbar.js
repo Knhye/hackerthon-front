@@ -6,42 +6,43 @@ import "../assets/fonts/fonts.css";
 
 const NavContainer = styled.div`
   width: 100%;
-  height: 15vh;
+  height: 14vh;
   display: flex;
   font-family: "MaruBuri";
+  background-color: transparent; /* 배경색을 투명으로 설정 */
+  position: sticky;
 `;
 
 const Logo = styled(Link)`
-  width: 8vw;
-  height: 15vh;
-  margin-left: 4%;
+  width: 13vw;
+  height: 20vh;
+  margin: -1.8% -7% 0 5%;
   background-image: url(${LogoImage});
   background-size: contain;
   background-repeat: no-repeat;
 `;
 
 const Menu = styled(Link)`
-  // Change Menu to Link
   font-size: 15px;
   gap: 10rem;
-  color: black; // Corrected color property
-  text-decoration: none; // Remove underline
+  color: black; /* 글자 색상 설정 */
+  text-decoration: none; /* 밑줄 제거 */
 `;
 
 const Login = styled(Link)`
-  color: black; // Corrected color property
-  text-decoration: none;
+  color: black; /* 글자 색상 설정 */
+  text-decoration: none; /* 밑줄 제거 */
 `;
 
 const Line = styled.div`
   width: 1px;
   height: 25px;
-  background-color: black;
+  background-color: black; /* 세로선 색상 설정 */
 `;
 
 const Signup = styled(Link)`
-  color: black; // Corrected color property
-  text-decoration: none;
+  color: black; /* 글자 색상 설정 */
+  text-decoration: none; /* 밑줄 제거 */
 `;
 
 const Navbar = () => {
@@ -49,19 +50,18 @@ const Navbar = () => {
   const excludedRoutes = ["/login", "/signup"];
 
   if (excludedRoutes.includes(location.pathname)) {
-    return null;
+    return null; // 로그인 및 회원가입 페이지에서는 Navbar를 숨김
   }
+
   return (
     <NavContainer>
       <Logo to="/" />
-      <div style={{ display: "flex", gap: "7rem", margin: "4% 0 0 15%" }}>
-        <Menu to="/symptom-analysis">증상 분석</Menu>
+      <div style={{ display: "flex", gap: "7rem", margin: "4% 0 0 25%" }}>
         <Menu to="/health-news">건강 뉴스</Menu>
         <Menu to="/community">커뮤니티</Menu>
-        <Menu to="/find-hospital">병원 찾기</Menu>
         <Menu to="/specialist-consultation">전문의 상담</Menu>
       </div>
-      <div style={{ display: "flex", margin: "1% 0 0 8%", gap: "1rem" }}>
+      <div style={{ display: "flex", margin: "1% 0 0 20%", gap: "1rem" }}>
         <Login to="/login">Login</Login>
         <Line />
         <Signup to="/signup">Signup</Signup>

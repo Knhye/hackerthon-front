@@ -1,7 +1,16 @@
 import React from "react";
+import Intro from "../components/Intro";
+import Promotion from "../components/Promotion";
+import SecondMainComponent from "../components/SecondMainComponent";
 
-const Home = () => {
-  return <div></div>;
-};
+function App() {
+  return (
+    <div>
+      <Intro />
+      <Promotion />
+      <SecondMainComponent />
+    </div>
+  );
+}
 
-export default Home;
+export default App;
