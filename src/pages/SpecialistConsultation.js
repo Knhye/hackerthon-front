@@ -1,11 +1,11 @@
 import React from "react";
-import QnA from "../components/QnA";
+import QnA from "../components/QnA"; // QnA 컴포넌트 임포트
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import Tag from "../components/Tag";
+import Tag from "../components/Tag"; // Tag 컴포넌트 임포트
 
 const PostButton = styled(Link)`
-  padding: 15px 40px;
+  padding:8px 15px;
   background-color: rgba(129, 199, 132, 0.65); /* 기본 배경색 */
   color: #333;
   text-decoration: none;
@@ -32,7 +32,10 @@ const HeightLine = styled.div`
   background-color: lightgray;
 `;
 
-const SpecialistConsultation = () => {
+const SpecialistConsultation = ({ qnaData, setQnaData }) => {
+  // setQnaData가 전달되지 않았을 때 확인하기 위해 콘솔 로그 추가
+  console.log("setQnaData:", setQnaData);
+
   return (
     <div>
       <button
@@ -42,13 +45,17 @@ const SpecialistConsultation = () => {
           margin: "3% 0 0 80%",
         }}
       >
-        <PostButton>New</PostButton>
+        <PostButton to="/specialist-consultation/create-question">
+          New
+        </PostButton>
       </button>
       <WidthLine />
       <div style={{ display: "flex" }}>
         <Tag />
         <HeightLine />
-        <QnA />
+        <div style={{ flexGrow: 1 }}>
+          <QnA qnaData={qnaData} setQnaData={setQnaData} /> {/* Q&A 리스트 */}
+        </div>
       </div>
     </div>
   );

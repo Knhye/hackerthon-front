@@ -43,7 +43,7 @@ function PostForm({ onSubmit, editingPost }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Title>게시글 작성</Title>
+      <Title>질문 작성</Title>
       <Input 
         type="text" 
         value={title} 
@@ -57,7 +57,7 @@ function PostForm({ onSubmit, editingPost }) {
       />
       <Button type="submit">{editingPost ? '수정' : '작성'}하기</Button>
       <NavigateButton type="button" onClick={handleNavigate}>
-        커뮤니티로 이동
+        상담 페이지 이동
       </NavigateButton> {/* 커뮤니티로 이동하는 버튼 */}
     </Form>
   );

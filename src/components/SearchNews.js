@@ -1,8 +1,9 @@
-// SearchNews.js
 import React, { useState } from "react";
 import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import searchNews1 from "../assets/images/searchnews1.jpg";
+import searchNews2 from "../assets/images/searchnews2.jpg";
 
 // 스타일 컴포넌트
 const Container = styled.div`
@@ -16,27 +17,36 @@ const SearchInput = styled.input`
   font-size: 16px;
   border-radius: 8px;
   border: 1px solid #ddd;
-  margin-left: auto; /* 중앙 정렬을 위해 자동 여백 추가 */
-  margin-right: auto; /* 중앙 정렬을 위해 자동 여백 추가 */
-  display: block; /* 블록 요소로 설정 */
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 `;
 
 const ChangeNewsContainer = styled.div`
   display: flex;
-  justify-content: center; /* 가로 중앙 정렬 */
-  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center;
+  align-items: center;
   gap: 20px;
   margin-top: 20px;
 `;
 
 const ChangeNews = styled.div`
   width: 30%;
-  background-color: #f0f0f0;
+  background-image: ${(props) => `url(${props.bgImage})`}; /* background-image로 변경 */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover; /* 이미지를 요소에 맞게 채우기 */
   border: 1px solid #ddd;
   text-align: center;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  min-height: 150px; /* 크기 조정 */
+  min-height: 150px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+  padding: 10px;
 `;
 
 const ChangeNewsLink = styled.div`
@@ -47,7 +57,7 @@ const ChangeNewsLink = styled.div`
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background: #fff;
+  background: rgba(0, 0, 0, 0.5);
 `;
 
 const SearchNews = ({ allNews }) => {
@@ -59,13 +69,26 @@ const SearchNews = ({ allNews }) => {
     setSearchTerm(term);
 
     if (term.trim() === "") {
-      setFilteredNews([]); // 검색어가 없으면 빈 배열로 설정
+      setFilteredNews([]);
     } else {
-      // 검색어가 포함된 뉴스만 필터링
       const filtered = allNews.filter((news) =>
         news.title.toLowerCase().includes(term.toLowerCase())
       );
       setFilteredNews(filtered);
+    }
+  };
+
+  const handleNewsClick = (id) => {
+    if (id === 1) {
+      window.open(
+        "https://health.chosun.com/site/data/html_dir/2024/12/27/2024122701822.html",
+        "_blank"
+      );
+    } else if (id === 2) {
+      window.open(
+        "https://sports.donga.com/life/article/all/20250107/130807444/1",
+        "_blank"
+      );
     }
   };
 
@@ -88,7 +111,7 @@ const SearchNews = ({ allNews }) => {
           icon={faMagnifyingGlass}
           style={{
             position: "absolute",
-            top: "72%",
+            top: "88.7%",
             right: "16%",
             fontSize: "20px",
             color: "gray",
@@ -98,8 +121,12 @@ const SearchNews = ({ allNews }) => {
       {filteredNews.length > 0 && (
         <ChangeNewsContainer>
           {filteredNews.map((news) => (
-            <ChangeNews key={news.id}>
-              {news.title}
+            <ChangeNews
+              key={news.id}
+              bgImage={news.id === 1 ? searchNews1 : searchNews2} // 각 뉴스의 배경 이미지 설정
+              onClick={() => handleNewsClick(news.id)} // 클릭 이벤트
+            >
+              <div>{news.title}</div>
               <ChangeNewsLink>{news.description}</ChangeNewsLink>
             </ChangeNews>
           ))}

@@ -1,18 +1,22 @@
-// App.js
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import SymptomAnalysis from "./pages/SymptomAnalysis";
 import HealthNews from "./pages/HealthNews";
 import Community from "./pages/Community";
-import FindHospital from "./pages/FindHospital";
 import SpecialistConsultation from "./pages/SpecialistConsultation";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import Post from "./pages/Post";  // Post 컴포넌트 임포트 추가
+import CreateQnA from "./pages/CreateQnA";
+import PostPage from "./pages/Post";
 
 const App = () => {
+  const [qnaData, setQnaData] = useState([]); // Q&A 데이터를 관리하는 상태
+
+  const addQuestion = (newQuestion) => {
+    setQnaData((prevData) => [...prevData, newQuestion]);
+  };
+
   return (
     <Router>
       <Navbar /> {/* Navbar를 Routes 밖으로 이동 */}
@@ -20,12 +24,18 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/symptom-analysis" element={<SymptomAnalysis />} />
         <Route path="/health-news" element={<HealthNews />} />
         <Route path="/community" element={<Community />} />
-        <Route path="/find-hospital" element={<FindHospital />} />
-        <Route path="/specialist-consultation" element={<SpecialistConsultation />} />
-        <Route path="/post" element={<Post />} /> {/* Post 페이지 라우팅 추가 */}
+        <Route
+          path="/specialist-consultation"
+          element={<SpecialistConsultation qnaData={qnaData} setQnaData={setQnaData} />}
+        />
+        <Route
+          path="/specialist-consultation/create-question"
+          element={<CreateQnA addQuestion={addQuestion} />}
+        />
+
+        <Route path="/post" element={<PostPage />} />
       </Routes>
     </Router>
   );

@@ -8,7 +8,7 @@ const TagContainer = styled.div`
 `;
 
 const TagTitle = styled.div`
-  margin: 5% 30%;
+  margin: 5% 40%;
   font-size: 30px;
   font-family: "ghanachoco";
 `;

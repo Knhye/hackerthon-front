@@ -1,96 +1,270 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import profileImage from "../assets/images/qnaProfile.jpg"; // 프로필 이미지 임포트
 
 const QnAContainer = styled.div`
   width: 100%;
   margin: 2% 5%;
-  font-family: "GowunBatang-Regular";
 `;
 
 const QnAItem = styled.div`
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 30px;
-  margin-bottom: 20px; /* 항목 간의 여백 */
+  width: 85%;
 `;
 
 const UserProfile = styled.img`
-  width: 50px; /* 프로필 사진 크기 */
-  height: 50px; /* 프로필 사진 크기 */
-  border-radius: 50%; /* 원형으로 만들기 */
+  width: 50px;
+  height: 50px;
 `;
 
 const UserInfo = styled.div`
   display: flex;
-  align-items: center; /* 세로 중앙 정렬 */
+  align-items: center;
 `;
 
 const UserName = styled.span`
-  margin-left: 10px; /* 프로필과 이름 간의 여백 */
+  margin-left: 10px;
   font-weight: bold;
 `;
 
-const Date = styled.span`
-  margin-left: auto; /* 오른쪽으로 정렬 */
-  color: #888; /* 날짜 색상 */
+const QDate = styled.span`
+  margin-left: auto;
+  color: #888;
 `;
 
 const Content = styled.p`
-  margin-top: 10px; /* 이미지와 텍스트 간의 여백 */
+  margin-top: 10px;
 `;
 
-const QnA = () => {
-  // 예시 질문 및 답변 데이터
-  const qnaData = [
-    {
-      questionId: 1,
-      userName: "홍길동",
-      date: "2023-01-01",
-      content: "우울증 극복을 위한 방법이 무엇인가요?",
-      answerUserName: "전문의 김철수",
-      answerDate: "2023-01-02",
-      answerContent: "우울증 극복을 위해서는 전문가의 상담이 중요합니다.",
-    },
-    {
-      questionId: 2,
-      userName: "이영희",
-      date: "2023-01-03",
-      content: "스트레칭이 집중력 향상에 미치는 영향은 무엇인가요?",
-      answerUserName: "전문의 박지민",
-      answerDate: "2023-01-04",
-      answerContent:
-        "스트레칭은 혈액순환을 개선하여 집중력을 높이는 데 도움을 줍니다.",
-    },
-    {
-      questionId: 3,
-      userName: "김철수",
-      date: "2023-01-05",
-      content: "트라우마를 극복하는 데 필요한 조언이 있나요?",
-      answerUserName: "전문의 이수민",
-      answerDate: "2023-01-06",
-      answerContent:
-        "트라우마 극복에는 시간이 필요하며, 전문가의 도움이 중요합니다.",
-    },
-  ];
+const TitleInput = styled.input`
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+`;
+
+const AnswerForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+`;
+
+const AnswerInput = styled.textarea`
+  width: calc(100% - 20px);
+  height: 50px;
+  padding: 10px;
+`;
+
+const SubmitAnswerButton = styled.button`
+  padding: 10px;
+  background-color: #81c784;
+  color: white;
+  border: none;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #66bb6a;
+    transition: bg-color 0.3s ease;
+  }
+`;
+
+const TagList = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+`;
+
+const TagItem = styled.span`
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 5px;
+  margin-right: 5px;
+`;
+
+const AnswerList = styled.div`
+  margin-top: 20px;
+  padding-left: 10px;
+  border-left: 2px solid #81c784;
+`;
+
+const AnswerItem = styled.div`
+  margin-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+`;
+
+const EditButton = styled.button`
+  padding: 5px;
+  background-color: #ffeb3b;
+  border: none;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #fbc02d;
+  }
+`;
+
+const DeleteButton = styled.button`
+  padding: 5px;
+  background-color: #e57373;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #ef5350;
+  }
+`;
+
+const QnA = ({ qnaData, setQnaData }) => {
+  const [answers, setAnswers] = useState({});
+  const [editingAnswerId, setEditingAnswerId] = useState(null);
+  const [editingQuestionId, setEditingQuestionId] = useState(null);
+  const [editedTitle, setEditedTitle] = useState("");
+  const [editedContent, setEditedContent] = useState("");
+
+  const handleAnswerSubmit = (questionId, e) => {
+    e.preventDefault();
+    const answerContent = answers[questionId] || "";
+    if (answerContent.trim() === "") {
+      alert("댓글을 입력하세요");
+      return;
+    }
+
+    setQnaData((prevData) =>
+      prevData.map((item) => {
+        if (item.questionId === questionId) {
+          return {
+            ...item,
+            answerUserName: "사용자 이름",
+            answerDate: new Date().toLocaleDateString(),
+            answerContent,
+          };
+        }
+        return item;
+      })
+    );
+
+    setAnswers((prev) => ({ ...prev, [questionId]: "" }));
+    setEditingAnswerId(null);
+  };
+
+  const handleAnswerChange = (questionId, e) => {
+    setAnswers((prev) => ({ ...prev, [questionId]: e.target.value }));
+  };
+
+  const handleEditClick = (index, title, content) => {
+    setEditingQuestionId(index);
+    setEditedTitle(title);
+    setEditedContent(content);
+  };
+
+  const handleQuestionEditSubmit = (index, e) => {
+    e.preventDefault();
+    setQnaData((prevData) =>
+      prevData.map((item, idx) => {
+        if (idx === index) {
+          return {
+            ...item,
+            title: editedTitle,
+            content: editedContent,
+          };
+        }
+        return item;
+      })
+    );
+    setEditingQuestionId(null);
+  };
+
+  const handleDeleteClick = (questionId) => {
+    setQnaData((prevData) =>
+      prevData.filter((item) => item.questionId !== questionId)
+    );
+  };
 
   return (
     <QnAContainer>
-      {qnaData.map((item) => (
+      {qnaData.map((item, index) => (
         <QnAItem key={item.questionId}>
           <UserInfo>
             <UserProfile src={profileImage} alt="User Profile" />
             <UserName>{item.userName}</UserName>
-            <Date>{item.date}</Date>
+            <QDate>{item.answerDate || new Date().toLocaleDateString()}</QDate>
           </UserInfo>
-          <Content>{item.content}</Content>
-          <hr style={{ margin: "50px 0" }} /> {/* 질문과 답변 구분선 */}
-          <UserInfo>
-            <UserProfile src={profileImage} alt="Doctor Profile" />
-            <UserName>{item.answerUserName}</UserName>
-            <Date>{item.answerDate}</Date>
-          </UserInfo>
-          <Content>{item.answerContent}</Content>
+
+          {editingQuestionId === index ? (
+            <form onSubmit={(e) => handleQuestionEditSubmit(index, e)}>
+              <TitleInput
+                type="text"
+                value={editedTitle}
+                onChange={(e) => setEditedTitle(e.target.value)}
+                placeholder="제목을 수정하세요..."
+              />
+              <AnswerInput
+                value={editedContent}
+                onChange={(e) => setEditedContent(e.target.value)}
+                placeholder="내용을 수정하세요..."
+              />
+              <SubmitAnswerButton type="submit">수정 완료</SubmitAnswerButton>
+            </form>
+          ) : (
+            <>
+              <h2>{item.title}</h2>
+              <Content>{item.content}</Content>
+            </>
+          )}
+
+          <TagList>
+            {item.tags.map((tag, index) => (
+              <TagItem key={index}>{tag}</TagItem>
+            ))}
+          </TagList>
+
+          {editingQuestionId !== index && (
+            <div>
+              <EditButton onClick={() => handleEditClick(index, item.title, item.content)}>
+                게시글 수정
+              </EditButton>
+              <DeleteButton onClick={() => handleDeleteClick(item.questionId)}>
+                게시글 삭제
+              </DeleteButton>
+            </div>
+          )}
+
+          {editingAnswerId === item.questionId ? (
+            <AnswerForm onSubmit={(e) => handleAnswerSubmit(item.questionId, e)}>
+              <AnswerInput
+                placeholder="댓글을 입력하세요..."
+                value={answers[item.questionId] || ""}
+                onChange={(e) => handleAnswerChange(item.questionId, e)}
+              />
+              <SubmitAnswerButton type="submit">수정하기</SubmitAnswerButton>
+            </AnswerForm>
+          ) : (
+            <AnswerForm onSubmit={(e) => handleAnswerSubmit(item.questionId, e)}>
+              <AnswerInput
+                placeholder="댓글을 입력하세요..."
+                value={answers[item.questionId] || ""}
+                onChange={(e) => handleAnswerChange(item.questionId, e)}
+              />
+              <SubmitAnswerButton type="submit">보내기</SubmitAnswerButton>
+            </AnswerForm>
+          )}
+
+          <AnswerList>
+            {item.answerContent && (
+              <AnswerItem>
+                <strong>{item.answerUserName || "전문의"}</strong> - {item.answerDate}
+                <p>{item.answerContent}</p>
+              </AnswerItem>
+            )}
+          </AnswerList>
         </QnAItem>
       ))}
     </QnAContainer>

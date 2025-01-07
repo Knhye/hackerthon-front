@@ -12,6 +12,7 @@ const Container = styled.div`
   width: 100vw; /* 전체 너비 설정 */
   height: 90vh; /* 전체 높이 설정 */
   font-family: "GowunBatang-Regular";
+  background-color:#000;
 `;
 
 const MainTitle = styled.div`
@@ -63,8 +64,8 @@ const Intro = () => {
           icon={faMagnifyingGlass}
           style={{
             position: "absolute",
-            top: "69%",
-            right: "30%",
+            top: "67.1%",
+            right: "29.5%",
             fontSize: "20px",
             color: "gray",
           }}

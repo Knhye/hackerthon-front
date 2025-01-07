@@ -9,8 +9,10 @@ const NavContainer = styled.div`
   height: 14vh;
   display: flex;
   font-family: "MaruBuri";
-  background-color: transparent; /* 배경색을 투명으로 설정 */
+  background-color: transparent !important; /* 배경색을 투명으로 설정 */
   position: sticky;
+  top:0;
+  z-index: 1000; 
 `;
 
 const Logo = styled(Link)`
@@ -58,8 +60,8 @@ const Navbar = () => {
       <Logo to="/" />
       <div style={{ display: "flex", gap: "7rem", margin: "4% 0 0 25%" }}>
         <Menu to="/health-news">건강 뉴스</Menu>
-        <Menu to="/community">커뮤니티</Menu>
-        <Menu to="/specialist-consultation">전문의 상담</Menu>
+        <Menu to="/community">전문의 상담</Menu>
+        <Menu to="/specialist-consultation">커뮤니티</Menu>
       </div>
       <div style={{ display: "flex", margin: "1% 0 0 20%", gap: "1rem" }}>
         <Login to="/login">Login</Login>

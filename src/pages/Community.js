@@ -141,7 +141,7 @@ const Community = () => {
   return (
     <Container>
       <RightSection>
-        <Title>다른 사람의 게시글</Title>
+        <Title>질문 목록</Title>
         {posts.length > 0 ? (
           posts.map((post) => (
             <Post
@@ -152,7 +152,7 @@ const Community = () => {
             />
           ))
         ) : (
-          <p>게시글이 없습니다.</p>
+          <p>게시된 질문이 없습니다.</p>
         )}
         <NavigateButton onClick={navigateToPost}>다른 페이지로 이동</NavigateButton>
       </RightSection>
