@@ -71,7 +71,7 @@ const SearchNews = ({ allNews }) => {
 
   return (
     <Container>
-      <h1 style={{ textAlign: "center", fontFamily: "yg-jalnan" }}>
+      <h1 style={{ textAlign: "center", fontFamily: "ghanachoco" }}>
         Search News
       </h1>
       <SearchInput

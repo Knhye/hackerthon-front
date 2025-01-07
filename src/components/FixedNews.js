@@ -38,7 +38,11 @@ const FixedNews = ({ staticNews }) => {
   return (
     <div>
       <h1
-        style={{ textAlign: "center", margin: "3% 0", fontFamily: "yg-jalnan" }}
+        style={{
+          textAlign: "center",
+          margin: "3% 0",
+          fontFamily: "ghanachoco",
+        }}
       >
         Recent News
       </h1>
