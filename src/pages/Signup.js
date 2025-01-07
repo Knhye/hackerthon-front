@@ -39,20 +39,6 @@ const Label = styled.label`
   color: #555;
 `;
 
-const Select = styled.select`
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 20px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-
-  &:focus {
-    outline: none;
-    border-color: #3d5ab8;
-    box-shadow: 0 0 5px rgba(61, 90, 184, 0.5);
-  }
-`;
-
 const Input = styled.input`
   width: calc(100% - 20px);
   padding: 10px;
@@ -107,10 +93,9 @@ const Signup = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
-  const [country, setCountry] = useState("");
 
   const handleSignup = () => {
-    if (username && password && age && country) {
+    if (username && password && age) {
       navigate("/login");
     } else {
       alert("Please enter your information.");
@@ -137,8 +122,8 @@ const Signup = () => {
             type="text"
             id="age"
             placeholder="나이를 입력해주세요"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
         </div>
 
