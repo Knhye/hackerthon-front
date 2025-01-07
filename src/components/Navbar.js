@@ -10,6 +10,7 @@ const NavContainer = styled.div`
   display: flex;
   font-family: "MaruBuri";
   background-color: transparent; /* 배경색을 투명으로 설정 */
+  position: fixed;
 `;
 
 const Logo = styled(Link)`
@@ -55,14 +56,12 @@ const Navbar = () => {
   return (
     <NavContainer>
       <Logo to="/" />
-      <div style={{ display: "flex", gap: "7rem", margin: "4% 0 0 15%" }}>
-        <Menu to="/symptom-analysis">증상 분석</Menu>
+      <div style={{ display: "flex", gap: "7rem", margin: "4% 0 0 25%" }}>
         <Menu to="/health-news">건강 뉴스</Menu>
         <Menu to="/community">커뮤니티</Menu>
-        <Menu to="/find-hospital">병원 찾기</Menu>
         <Menu to="/specialist-consultation">전문의 상담</Menu>
       </div>
-      <div style={{ display: "flex", margin: "1% 0 0 8%", gap: "1rem" }}>
+      <div style={{ display: "flex", margin: "1% 0 0 20%", gap: "1rem" }}>
         <Login to="/login">Login</Login>
         <Line />
         <Signup to="/signup">Signup</Signup>

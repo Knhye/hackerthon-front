@@ -10,14 +10,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw; /* 전체 너비 설정 */
-  height: 100vh; /* 전체 높이 설정 */
-
+  height: 90vh; /* 전체 높이 설정 */
   font-family: "GowunBatang-Regular";
 `;
 
 const MainTitle = styled.div`
   font-size: 50px;
-  margin: 10% 0 5% 0;
+  margin: 15% 0 5% 0;
 `;
 
 const Input = styled.input`
@@ -62,7 +61,7 @@ const Intro = () => {
           icon={faMagnifyingGlass}
           style={{
             position: "absolute",
-            top: "69%",
+            top: "65.5%",
             right: "30%",
             fontSize: "20px",
             color: "gray",
