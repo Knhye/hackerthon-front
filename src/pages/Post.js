@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import PostForm from "../components/PostForm";
 import PostItem from "../components/PostItem";
+import Tag from "../components/Tag";
 
 const PostPage = () => {
   const [posts, setPosts] = useState([]);
@@ -43,9 +44,17 @@ const PostPage = () => {
           />
         ))}
       </PostsContainer>
+      <HeightLine />
+      <Tag />
     </Container>
   );
 };
+
+const HeightLine = styled.div`
+  width: 1px;
+  height: auto;
+  background-color: lightgray;
+`;
 
 const Container = styled.div`
   display: flex;

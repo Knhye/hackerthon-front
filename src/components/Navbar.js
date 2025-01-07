@@ -9,8 +9,10 @@ const NavContainer = styled.div`
   height: 14vh;
   display: flex;
   font-family: "MaruBuri";
-  background-color: transparent; /* 배경색을 투명으로 설정 */
+  background-color: rgba(0, 0, 0, 0); /* 배경색을 투명으로 설정 */
   position: sticky;
+  top: 0;
+  z-index: 1000;
 `;
 
 const Logo = styled(Link)`

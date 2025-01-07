@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom"; // useNavigate 훅 추가
 
 function PostForm({ onSubmit, editingPost }) {
   const [title, setTitle] = useState("");
+  const [tag, setTag] = useState("");
   const [content, setContent] = useState("");
   const navigate = useNavigate(); // navigate 함수 사용
 
   useEffect(() => {
     if (editingPost) {
       setTitle(editingPost.title);
+      setTag(editingPost.tag);
       setContent(editingPost.content);
     }
   }, [editingPost]);
@@ -26,6 +28,7 @@ function PostForm({ onSubmit, editingPost }) {
     const newPost = {
       id: editingPost ? editingPost.id : Date.now(),
       title,
+      tag,
       content,
       date: editingPost ? editingPost.date : new Date(),
     };
@@ -33,6 +36,7 @@ function PostForm({ onSubmit, editingPost }) {
     // onSubmit 함수로 새 게시글을 부모 컴포넌트로 전달
     onSubmit(newPost);
     setTitle("");
+    setTag("");
     setContent("");
   };
 
@@ -50,16 +54,23 @@ function PostForm({ onSubmit, editingPost }) {
         onChange={(e) => setTitle(e.target.value)}
         placeholder="제목"
       />
+      <Input
+        type="text"
+        value={tag}
+        onChange={(e) => setTag(e.target.value)}
+        placeholder="태그"
+      />
       <Textarea
         value={content}
         onChange={(e) => setContent(e.target.value)}
         placeholder="내용"
       />
-      <Button type="submit">{editingPost ? "수정" : "작성"}하기</Button>
-      <NavigateButton type="button" onClick={handleNavigate}>
-        커뮤니티로 이동
-      </NavigateButton>{" "}
-      {/* 커뮤니티로 이동하는 버튼 */}
+      <div style={{ display: "flex", gap: "1rem" }}>
+        <Button type="submit">{editingPost ? "수정" : "작성"}하기</Button>
+        <NavigateButton type="button" onClick={handleNavigate}>
+          커뮤니티로 이동
+        </NavigateButton>
+      </div>
     </Form>
   );
 }
@@ -67,6 +78,8 @@ function PostForm({ onSubmit, editingPost }) {
 const Title = styled.div`
   font-size: 24px;
   font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
 `;
 
 const Form = styled.form`
@@ -76,7 +89,7 @@ const Form = styled.form`
   gap: 15px;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
 `;
 
 const Input = styled.input`
@@ -100,26 +113,37 @@ const Textarea = styled.textarea`
 `;
 
 const Button = styled.button`
-  padding: 10px 20px;
+  width: 50%;
+  height: 40px;
   font-size: 16px;
-  background-color: #fff;
-  color: #000;
+  background-color: rgba(76, 175, 79, 0.66);
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #81c784; // 더 진한 파스텔 연두색
+    transition: bg-color 0.3s ease;
+  }
 `;
 
 const NavigateButton = styled.button`
-  padding: 10px 20px;
+  width: 50%;
+  height: 40px;
   font-size: 16px;
-  background-color: #4caf50;
+  background-color: rgba(76, 175, 79, 0.66);
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 15px;
   transition: background-color 0.3s, transform 0.2s;
+
+  &:hover {
+    background-color: #81c784; // 더 진한 파스텔 연두색
+    transition: bg-color 0.3s ease;
+  }
 `;
 
 export default PostForm;

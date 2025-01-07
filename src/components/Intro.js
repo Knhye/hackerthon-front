@@ -10,13 +10,19 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   width: 100vw; /* 전체 너비 설정 */
-  height: 90vh; /* 전체 높이 설정 */
+  height: 100vh; /* 전체 높이 설정 */
   font-family: "GowunBatang-Regular";
+  margin-top: -10%;
+  background: linear-gradient(
+    to right,
+    rgba(192, 196, 212, 0.51),
+    rgba(180, 195, 181, 0.66)
+  );
 `;
 
 const MainTitle = styled.div`
   font-size: 50px;
-  margin: 10% 0 5% 0;
+  margin: 20% 0 5% 0;
 `;
 
 const Input = styled.input`

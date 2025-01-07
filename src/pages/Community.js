@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom"; // useNavigate로 수정
+import Tag from "../components/Tag";
 
 // 스타일 컴포넌트
 const Container = styled.div`
+  width: 80vw;
+  height: 75vh;
   padding: 20px;
   display: flex;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 20px auto;
   background-color: #f4f4f9;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
 `;
 
 const RightSection = styled.div`
@@ -22,7 +26,7 @@ const Title = styled.h1`
   color: #333;
   font-size: 32px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin: 30px 0 80px 0;
 `;
 
 const PostContainer = styled.div`
@@ -88,7 +92,7 @@ const Comment = styled.div`
 
 const NavigateButton = styled.button`
   padding: 10px 20px;
-  background-color: #ff5733;
+  background-color: rgba(129, 199, 132, 0.66);
   color: white;
   border: none;
   border-radius: 30px;
@@ -98,7 +102,7 @@ const NavigateButton = styled.button`
   margin-top: 20px;
 
   &:hover {
-    background-color: #c0392b;
+    background-color: #81c784;
     transform: scale(1.05);
   }
 `;
@@ -115,9 +119,7 @@ const Post = ({ post, onLike, comments }) => {
           style={{ maxWidth: "100%", maxHeight: "400px", borderRadius: "8px" }}
         />
       )}
-      <LikeButton onClick={() => onLike(post.id)}>
-        좋아요 {post.likes}
-      </LikeButton>
+
       <CommentList>
         {comments.map((comment, index) => (
           <Comment key={index}>{comment}</Comment>
@@ -147,7 +149,7 @@ const Community = () => {
   return (
     <Container>
       <RightSection>
-        <Title>다른 사람의 게시글</Title>
+        <Title>최근 게시글</Title>
         {posts.length > 0 ? (
           posts.map((post) => (
             <Post
@@ -158,10 +160,10 @@ const Community = () => {
             />
           ))
         ) : (
-          <p>게시글이 없습니다.</p>
+          <p>게시글이 비어있습니다.</p>
         )}
         <NavigateButton onClick={navigateToPost}>
-          다른 페이지로 이동
+          게시글을 작성해보세요!
         </NavigateButton>
       </RightSection>
     </Container>

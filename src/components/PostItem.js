@@ -1,18 +1,45 @@
 import React from "react";
+import ProfileImage from "../assets/images/exampleProfile.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 const PostItem = ({ post, onEdit, onDelete }) => {
   return (
     <div style={styles.card}>
-      <h3 style={styles.title}>{post.title}</h3>
-      <p style={styles.content}>{post.content}</p>
-      <p style={styles.date}>{new Date(post.date).toLocaleString()}</p>
+      <div style={{ display: "flex", gap: "3rem" }}>
+        <img
+          src={ProfileImage}
+          style={{
+            width: "80px",
+            height: "80px",
+            borderRadius: "100%",
+            marginLeft: "20px",
+          }}
+        ></img>
+        <h1>Username</h1>
+      </div>
+      <div style={{ marginLeft: "150px" }}>
+        <h3 style={styles.title}>{post.title}</h3>
+        <p style={styles.content}>{post.content}</p>
+        <p style={styles.date}>{new Date(post.date).toLocaleString()}</p>
+      </div>
+
       <div style={styles.buttons}>
-        <button style={styles.editButton} onClick={() => onEdit(post)}>
+        <FontAwesomeIcon
+          icon={faPen}
+          style={styles.editButton}
+          onClick={() => onEdit(post)}
+        >
           수정
-        </button>
-        <button style={styles.deleteButton} onClick={() => onDelete(post.id)}>
+        </FontAwesomeIcon>
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          style={styles.deleteButton}
+          onClick={() => onDelete(post.id)}
+        >
           삭제
-        </button>
+        </FontAwesomeIcon>
       </div>
     </div>
   );
@@ -27,6 +54,7 @@ const styles = {
     backgroundColor: "#f9f9f9",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
   },
+
   title: {
     fontSize: "20px",
     fontWeight: "bold",
@@ -46,10 +74,11 @@ const styles = {
   buttons: {
     display: "flex",
     gap: "10px",
+    margin: "-20% 0 16% 80%",
   },
   editButton: {
     padding: "5px 10px",
-    fontSize: "14px",
+    fontSize: "20px",
     backgroundColor: "#4CAF50",
     color: "#fff",
     border: "none",
@@ -59,7 +88,7 @@ const styles = {
   },
   deleteButton: {
     padding: "5px 10px",
-    fontSize: "14px",
+    fontSize: "20px",
     backgroundColor: "#f44336",
     color: "#fff",
     border: "none",
