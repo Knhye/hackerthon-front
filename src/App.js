@@ -1,3 +1,4 @@
+// App.js
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
@@ -9,6 +10,7 @@ import SpecialistConsultation from "./pages/SpecialistConsultation";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Post from "./pages/Post";  // Post 컴포넌트 임포트 추가
 
 const App = () => {
   return (
@@ -22,10 +24,8 @@ const App = () => {
         <Route path="/health-news" element={<HealthNews />} />
         <Route path="/community" element={<Community />} />
         <Route path="/find-hospital" element={<FindHospital />} />
-        <Route
-          path="/specialist-consultation"
-          element={<SpecialistConsultation />}
-        />
+        <Route path="/specialist-consultation" element={<SpecialistConsultation />} />
+        <Route path="/post" element={<Post />} /> {/* Post 페이지 라우팅 추가 */}
       </Routes>
     </Router>
   );
