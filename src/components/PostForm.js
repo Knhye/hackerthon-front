@@ -80,6 +80,7 @@ const Title = styled.div`
   font-weight: 600;
   text-align: center;
   margin-bottom: 20px;
+  font-family: "GowunBatang-Regular";
 `;
 
 const Form = styled.form`
@@ -90,6 +91,7 @@ const Form = styled.form`
   padding: 20px;
   border-radius: 8px;
   background-color: #fff;
+  font-family: "GowunBatang-Regular";
 `;
 
 const Input = styled.input`
@@ -99,6 +101,7 @@ const Input = styled.input`
   border: 1px solid #ddd;
   outline: none;
   transition: border-color 0.3s;
+  font-family: "GowunBatang-Regular";
 `;
 
 const Textarea = styled.textarea`
@@ -110,6 +113,7 @@ const Textarea = styled.textarea`
   transition: border-color 0.3s;
   resize: vertical;
   min-height: 15vh;
+  font-family: "GowunBatang-Regular";
 `;
 
 const Button = styled.button`
@@ -122,7 +126,7 @@ const Button = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-
+  font-family: "GowunBatang-Regular";
   &:hover {
     background-color: #81c784; // 더 진한 파스텔 연두색
     transition: bg-color 0.3s ease;
@@ -139,7 +143,7 @@ const NavigateButton = styled.button`
   border-radius: 5px;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.2s;
-
+  font-family: "GowunBatang-Regular";
   &:hover {
     background-color: #81c784; // 더 진한 파스텔 연두색
     transition: bg-color 0.3s ease;

@@ -15,6 +15,8 @@ const Container = styled.div`
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   text-align: center;
+
+  font-family: "GowunBatang-Regular";
 `;
 
 const RightSection = styled.div`
@@ -55,23 +57,6 @@ const PostContent = styled.p`
   font-size: 15px;
   color: #666;
   line-height: 1.6;
-`;
-
-const LikeButton = styled.button`
-  padding: 8px 18px;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-right: 12px;
-  font-size: 14px;
-  transition: background-color 0.3s, transform 0.2s;
-
-  &:hover {
-    background-color: #218838;
-    transform: scale(1.1);
-  }
 `;
 
 const CommentList = styled.div`
@@ -162,7 +147,10 @@ const Community = () => {
         ) : (
           <p>게시글이 비어있습니다.</p>
         )}
-        <NavigateButton onClick={navigateToPost}>
+        <NavigateButton
+          onClick={navigateToPost}
+          style={{ fontFamily: "GowunBatang-Regular" }}
+        >
           게시글을 작성해보세요!
         </NavigateButton>
       </RightSection>

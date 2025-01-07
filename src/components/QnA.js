@@ -5,6 +5,7 @@ import profileImage from "../assets/images/qnaProfile.jpg"; // 프로필 이미�
 const QnAContainer = styled.div`
   width: 100%;
   margin: 2% 5%;
+  font-family: "GowunBatang-Regular";
 `;
 
 const QnAItem = styled.div`
@@ -62,6 +63,7 @@ const AnswerInput = styled.textarea`
   width: calc(100% -20px);
   height: 50px;
   padding: 10px;
+  font-family: "GowunBatang-Regular";
 `;
 
 const SubmitAnswerButton = styled.button`
@@ -70,7 +72,7 @@ const SubmitAnswerButton = styled.button`
   color: white;
   border: none;
   border-radius: 5px;
-
+  font-family: "GowunBatang-Regular";
   &:hover {
     background-color: #66bb6a;
     transition: bg-color 0.3s ease;

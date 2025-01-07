@@ -28,10 +28,6 @@ const BlogTitle = styled.h3`
   font-size: 20px; /* Font size for the blog title */
 `;
 
-const BlogContent = styled.p`
-  font-size: 16px; /* Font size for the blog content */
-`;
-
 const BlogLink = styled.a`
   display: block; /* Make link block-level */
   margin-top: 10px; /* Space above the link */
@@ -91,19 +87,18 @@ const diseases = [
 
 const blogs = [
   {
-    title: "블로그 제목 1",
-    description: "이 블로그는 주제에 대한 설명입니다.",
-    url: "https://example-blog1.com", // Replace with actual URL
+    title: "두 얼굴을 가진 ‘양극성장애’",
+    url: "https://www.medifonews.com/news/article.html?no=182238",
   },
   {
-    title: "블로그 제목 2",
-    description: "이 블로그는 다른 주제에 대한 설명입니다.",
-    url: "https://example-blog2.com", // Replace with actual URL
+    title: "주요우울장애 Major Depressive Disorder - 네이버 블로그",
+
+    url: "https://m.blog.naver.com/lp_001/221321889234",
   },
   {
-    title: "블로그 제목 3",
-    description: "이 블로그는 또 다른 주제에 대한 설명입니다.",
-    url: "https://example-blog3.com", // Replace with actual URL
+    title: "[질환정보] 불안장애를 확인할 수 있는 초기증상",
+
+    url: "http://m.yakup.com/news/index.html?mode=view&nid=278372",
   },
 ];
 
@@ -132,7 +127,7 @@ const RecommandList = () => {
         <BlogTitle>외부 블로그</BlogTitle>
         {blogs.map((blog, index) => (
           <div key={index}>
-            <BlogContent>{blog.description}</BlogContent>
+            <BlogTitle>{blog.title}</BlogTitle>
             <BlogLink href={blog.url} target="_blank" rel="noopener noreferrer">
               {blog.title}
             </BlogLink>

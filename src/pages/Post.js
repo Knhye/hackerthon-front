@@ -61,6 +61,7 @@ const Container = styled.div`
   gap: 30px;
   padding: 20px;
   justify-content: space-between;
+  font-family: "GowunBatang-Regular";
 `;
 
 const FormContainer = styled.div`

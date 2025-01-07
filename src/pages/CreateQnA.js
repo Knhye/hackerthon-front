@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateQnAContainer = styled.div`
   margin: 3%;
+  font-family: "GowunBatang-Regular";
 `;
 
 const Title = styled.h2`
@@ -22,6 +23,7 @@ const InputField = styled.input`
   margin: 10px 0; /* 위아래 여백 */
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: "GowunBatang-Regular";
 `;
 
 const TextArea = styled.textarea`
@@ -31,6 +33,7 @@ const TextArea = styled.textarea`
   margin: 20px 0; /* 위아래 여백 */
   border: 1px solid #ddd;
   border-radius: 5px;
+  font-family: "GowunBatang-Regular";
 `;
 
 const SubmitButton = styled.button`
@@ -40,6 +43,7 @@ const SubmitButton = styled.button`
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  font-family: "GowunBatang-Regular";
 
   &:hover {
     background-color: #66bb6a; /* hover 시 색상 변경 */

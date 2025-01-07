@@ -98,7 +98,7 @@ const Login = () => {
       alert("Please enter both username and password."); // Simple error handling
       return; // Early return only if validation fails
     }
-    navigate("/videochat"); // Navigate to video chat on successful login
+    navigate("/"); // Navigate to video chat on successful login
   };
 
   return (

@@ -7,7 +7,13 @@ import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 const PostItem = ({ post, onEdit, onDelete }) => {
   return (
     <div style={styles.card}>
-      <div style={{ display: "flex", gap: "3rem" }}>
+      <div
+        style={{
+          display: "flex",
+          gap: "3rem",
+          fontFamily: "GowunBatang-Regular",
+        }}
+      >
         <img
           src={ProfileImage}
           style={{
@@ -53,6 +59,7 @@ const styles = {
     borderRadius: "8px",
     backgroundColor: "#f9f9f9",
     boxShadow: "0 2px 5px rgba(0, 0, 0, 0.1)",
+    fontFamily: "GowunBatang-Regular",
   },
 
   title: {
@@ -60,6 +67,7 @@ const styles = {
     fontWeight: "bold",
     color: "#333",
     marginBottom: "10px",
+    fontFamily: "GowunBatang-Regular",
   },
   content: {
     fontSize: "16px",
