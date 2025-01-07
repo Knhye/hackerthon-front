@@ -28,7 +28,9 @@ const App = () => {
         <Route path="/community" element={<Community />} />
         <Route
           path="/specialist-consultation"
-          element={<SpecialistConsultation qnaData={qnaData} />}
+          element={
+            <SpecialistConsultation qnaData={qnaData} setQnaData={setQnaData} />
+          }
         />
         <Route
           path="/specialist-consultation/create-question"

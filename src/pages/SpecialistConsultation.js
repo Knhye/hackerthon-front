@@ -32,7 +32,7 @@ const HeightLine = styled.div`
   background-color: lightgray;
 `;
 
-const SpecialistConsultation = ({ qnaData }) => {
+const SpecialistConsultation = ({ qnaData, setQnaData }) => {
   return (
     <div>
       <button
@@ -51,7 +51,7 @@ const SpecialistConsultation = ({ qnaData }) => {
         <Tag />
         <HeightLine />
         <div style={{ flexGrow: 1 }}>
-          <QnA qnaData={qnaData} /> {/* Q&A 리스트 */}
+          <QnA qnaData={qnaData} setQnaData={setQnaData} /> {/* Q&A 리스트 */}
         </div>
       </div>
     </div>
