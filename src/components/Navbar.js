@@ -12,9 +12,9 @@ const NavContainer = styled.div`
 `;
 
 const Logo = styled(Link)`
-  width: 8vw;
-  height: 15vh;
-  margin-left: 4%;
+  width: 13vw;
+  height: 20vh;
+  margin: -1% -7% 0 5%;
   background-image: url(${LogoImage});
   background-size: contain;
   background-repeat: no-repeat;
